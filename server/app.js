@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import libraries
 const path = require('path');
 const express = require('express');
