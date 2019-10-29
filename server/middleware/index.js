@@ -42,7 +42,7 @@ module.exports.requiresLogin = requiresLogin;
 module.exports.requiresLogout = requiresLogout;
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.requiresLogout = requiresLogout;
+  module.exports.requiresLogout = requiresSecure;
 } else {
   module.exports.requiresSecure = bypassSecure;
 }
