@@ -26,9 +26,9 @@ const DomoForm = (props) => {
             <label htmlFor="alignment">Alignment: </label>
             <select id="domoAlignment">
                 <option value="chaotic">Chaotic</option>
-                <option value="chaotic">Lawful</option>
-                <option value="chaotic">Evil</option>
-                <option value="chaotic">Good</option>
+                <option value="lawful">Lawful</option>
+                <option value="evil">Evil</option>
+                <option value="good">Good</option>
             </select>
             <input type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
