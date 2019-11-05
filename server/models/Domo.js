@@ -25,6 +25,11 @@ const DomoSchema = new mongoose.Schema({
     required: true,
   },
 
+  alignment: {
+    type: String,
+    required: true,
+  },
+
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
