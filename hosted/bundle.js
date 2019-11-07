@@ -87,10 +87,11 @@ var DomoList = function DomoList(props) {
         );
     }
     var domoNodes = props.domos.map(function (domo) {
+        console.log(props.domos);
         return React.createElement(
             'div',
             { key: domo._id, className: 'domo' },
-            React.createElement('imd', { src: '/assets/img/domoface.jpeg', alt: 'domo face', className: 'domoFace' }),
+            React.createElement('img', { src: '/assets/img/domoface.jpeg', alt: 'domo face', className: 'domoFace' }),
             React.createElement(
                 'h3',
                 { className: 'domoName' },
@@ -111,6 +112,16 @@ var DomoList = function DomoList(props) {
                 'Alignment: ',
                 selectedAlignment,
                 ' '
+            ),
+            React.createElement(
+                'button',
+                { className: 'delete', onClick: function onClick() {
+                        props.domos.pop();
+                        console.log('new domos: ' + props.domos);
+                        console.log('on click');
+                        loadDomosFromServer();
+                    } },
+                'Delete Domo'
             )
         );
     });

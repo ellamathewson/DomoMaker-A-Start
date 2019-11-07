@@ -35,6 +35,8 @@ const handleDomo = (e) => {
           </form>
       );
   };
+
+  
   
   // determines what to draw
   // iff array of domos is empty, show UI there are no domos yet
@@ -51,12 +53,19 @@ const handleDomo = (e) => {
           );
       }
       const domoNodes = props.domos.map(function(domo) {
+          console.log(props.domos);
           return (
               <div key={domo._id} className="domo">
-                  <imd src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
+                  <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                   <h3 className="domoName">Name: {domo.name} </h3>
                   <h3 className="domoAge">Age: {domo.age} </h3>
                   <h3 className="domoAlignment">Alignment: {selectedAlignment} </h3>
+                  <button className="delete" onClick={function() {
+                      props.domos.pop();
+                      console.log(`new domos: ${props.domos}`)
+                      console.log('on click');
+                      loadDomosFromServer();
+                  }}>Delete Domo</button>
               </div>
           );
       });
