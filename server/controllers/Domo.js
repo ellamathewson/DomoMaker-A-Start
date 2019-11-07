@@ -56,6 +56,24 @@ const getDomos = (request, response) => {
   });
 };
 
+const removeDomo = (request, response) => {
+  const req = request;
+  const res = response;
+  /* https://coursework.vschool.io/mongoose-crud/ */
+  return Domo.DomoModel.findByIdAndRemove(req.params.todoId, (err, todo) => {
+    // As always, handle any potential errors:
+    if (err) return res.status(500).send(err);
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    const deleteResponse = {
+      message: 'Todo successfully deleted',
+      id: todo._id,
+    };
+    return res.status(200).send(deleteResponse);
+  });
+};
+
 module.exports.makerPage = makerPage;
 module.exports.getDomos = getDomos;
+module.exports.removeDomo = removeDomo;
 module.exports.make = makeDomo;

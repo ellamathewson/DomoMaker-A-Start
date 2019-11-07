@@ -92,12 +92,7 @@ var DomoList = function DomoList(props) {
             ),
             React.createElement(
                 'button',
-                { className: 'delete', onClick: function onClick() {
-                        props.domos.pop();
-                        console.log('new domos: ' + props.domos);
-                        console.log('on click');
-                        loadDomosFromServer();
-                    } },
+                { className: 'delete', onClick: removeDomoFromServer },
                 'Delete Domo'
             )
         );
@@ -108,6 +103,12 @@ var DomoList = function DomoList(props) {
         { className: 'domoList' },
         domoNodes
     );
+};
+
+var removeDomoFromServer = function removeDomoFromServer() {
+    sendAjax('GET', '/removeDomo', null, function (data) {
+        ReactDOM.render(React.createElement(DomoList, { domos: data.domos }), document.querySelector("#domos"));
+    });
 };
 
 // grabs domos from the server and renders DomoList
