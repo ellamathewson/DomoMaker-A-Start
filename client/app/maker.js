@@ -41,6 +41,8 @@ const handleDomo = (e) => {
   // update state of this component via ajax
   // every time the state updates, page immediately creates UI and shows updates
   const DomoList = function(props) {
+    var e = document.getElementById("domoAlignment");
+    var selectedAlignment = e.options[e.selectedIndex].value;
       if(props.domos.length === 0) {
           return (
               <div className="domoList">
@@ -54,7 +56,7 @@ const handleDomo = (e) => {
                   <imd src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                   <h3 className="domoName">Name: {domo.name} </h3>
                   <h3 className="domoAge">Age: {domo.age} </h3>
-                  <h3 className="domoAlignment">Alignment: {domo.alignment} </h3>
+                  <h3 className="domoAlignment">Alignment: {selectedAlignment} </h3>
               </div>
           );
       });

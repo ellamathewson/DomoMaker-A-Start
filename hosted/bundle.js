@@ -73,6 +73,8 @@ var DomoForm = function DomoForm(props) {
 // update state of this component via ajax
 // every time the state updates, page immediately creates UI and shows updates
 var DomoList = function DomoList(props) {
+    var e = document.getElementById("domoAlignment");
+    var selectedAlignment = e.options[e.selectedIndex].value;
     if (props.domos.length === 0) {
         return React.createElement(
             'div',
@@ -107,7 +109,7 @@ var DomoList = function DomoList(props) {
                 'h3',
                 { className: 'domoAlignment' },
                 'Alignment: ',
-                domo.alignment,
+                selectedAlignment,
                 ' '
             )
         );
