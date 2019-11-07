@@ -34,7 +34,7 @@ var handleSignup = function handleSignup(e) {
         return false;
     }
 
-    sendAjax('POST', $('signupForm').attr('action'), $('#signupForm').serialize(), redirect);
+    sendAjax('POST', $('#signupForm').attr('action'), $('#signupForm').serialize(), redirect);
 
     return false;
 };
