@@ -61,7 +61,6 @@ const handleDomo = (e) => {
                   <h3 className="domoName">Name: {domo.name} </h3>
                   <h3 className="domoAge">Age: {domo.age} </h3>
                   <h3 className="domoAlignment">Alignment: {domo.alignment} </h3>
-                  <button className="delete" onClick={removeDomoFromServer}>Delete Domo</button>
               </div>
           );
       });
@@ -71,14 +70,6 @@ const handleDomo = (e) => {
               {domoNodes}
           </div>
       );
-  };
-
-  const removeDomoFromServer = () => {
-      sendAjax('GET', '/removeDomo', null, (data) => {
-          ReactDOM.render(
-              <DomoList domos={data.domos} />, document.querySelector("#domos")
-          );
-      });
   };
   
   // grabs domos from the server and renders DomoList
