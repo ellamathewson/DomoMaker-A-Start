@@ -44,22 +44,22 @@ var DomoForm = function DomoForm(props) {
             { id: 'domoAlignment' },
             React.createElement(
                 'option',
-                { value: 'chaotic' },
+                { value: 'Chaotic' },
                 'Chaotic'
             ),
             React.createElement(
                 'option',
-                { value: 'lawful' },
+                { value: 'Lawful' },
                 'Lawful'
             ),
             React.createElement(
                 'option',
-                { value: 'evil' },
+                { value: 'Evil' },
                 'Evil'
             ),
             React.createElement(
                 'option',
-                { value: 'good' },
+                { value: 'Good' },
                 'Good'
             )
         ),
@@ -110,7 +110,7 @@ var DomoList = function DomoList(props) {
                 'h3',
                 { className: 'domoAlignment' },
                 'Alignment: ',
-                selectedAlignment,
+                domo.alignment,
                 ' '
             ),
             React.createElement(

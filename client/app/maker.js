@@ -25,10 +25,10 @@ const handleDomo = (e) => {
               <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
               <label htmlFor="alignment">Alignment: </label>
               <select id="domoAlignment">
-                  <option value="chaotic">Chaotic</option>
-                  <option value="lawful">Lawful</option>
-                  <option value="evil">Evil</option>
-                  <option value="good">Good</option>
+                  <option value="Chaotic">Chaotic</option>
+                  <option value="Lawful">Lawful</option>
+                  <option value="Evil">Evil</option>
+                  <option value="Good">Good</option>
               </select>
               <input type="hidden" name="_csrf" value={props.csrf} />
               <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
@@ -59,7 +59,7 @@ const handleDomo = (e) => {
                   <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                   <h3 className="domoName">Name: {domo.name} </h3>
                   <h3 className="domoAge">Age: {domo.age} </h3>
-                  <h3 className="domoAlignment">Alignment: {selectedAlignment} </h3>
+                  <h3 className="domoAlignment">Alignment: {domo.alignment} </h3>
                   <button className="delete" onClick={function() {
                       props.domos.pop();
                       console.log(`new domos: ${props.domos}`)
