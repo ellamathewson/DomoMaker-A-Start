@@ -1,29 +1,27 @@
+'use strict';
 
+var handleDomo = function handleDomo(e) {
+    e.preventDefault();
 
-let handleDomo = function handleDomo(e) {
-  e.preventDefault();
+    $('#domoMessage').animate({ width: 'hide' }, 350);
 
-  $('#domoMessage').animate({ width: 'hide' }, 350);
-
-  console.log($('#domoAlignment').val());
-
-  if ($('#domoName').val() == '' || $('#domoAge').val() == '' || $('#domoAlignment').val() == '') {
-      handleError('RAWR! All fields are required');
-      return false;
+    if ($('#domoName').val() == '' || $('#domoAge').val() == '') {
+        handleError('RAWR! All fields are required');
+        return false;
     }
 
-  sendAjax('POST', $('#domoForm').attr('action'), $('#domoForm').serialize(), () => {
-      loadDomosFromServer();
+    sendAjax('POST', $('#domoForm').attr('action'), $('#domoForm').serialize(), function () {
+        loadDomosFromServer();
     });
-  return false;
+    return false;
 };
 
-let DomoForm = function DomoForm(props) {
-  return React.createElement(
+var DomoForm = function DomoForm(props) {
+    return React.createElement(
         'form',
-      { id: 'domoForm', onSubmit: handleDomo,
-        name: 'domoForm', action: '/maker',
-        method: 'POST', className: 'domoForm' },
+        { id: 'domoForm', onSubmit: handleDomo,
+            name: 'domoForm', action: '/maker',
+            method: 'POST', className: 'domoForm' },
         React.createElement(
             'label',
             { htmlFor: 'name' },
@@ -74,9 +72,9 @@ let DomoForm = function DomoForm(props) {
 // iff array of domos is empty, show UI there are no domos yet
 // update state of this component via ajax
 // every time the state updates, page immediately creates UI and shows updates
-let DomoList = function DomoList(props) {
-  if (props.domos.length === 0) {
-      return React.createElement(
+var DomoList = function DomoList(props) {
+    if (props.domos.length === 0) {
+        return React.createElement(
             'div',
             { className: 'domoList' },
             React.createElement(
@@ -86,8 +84,8 @@ let DomoList = function DomoList(props) {
             )
         );
     }
-  let domoNodes = props.domos.map((domo) => {
-      return React.createElement(
+    var domoNodes = props.domos.map(function (domo) {
+        return React.createElement(
             'div',
             { key: domo._id, className: 'domo' },
             React.createElement('imd', { src: '/assets/img/domoface.jpeg', alt: 'domo face', className: 'domoFace' }),
@@ -115,7 +113,7 @@ let DomoList = function DomoList(props) {
         );
     });
 
-  return React.createElement(
+    return React.createElement(
         'div',
         { className: 'domoList' },
         domoNodes
@@ -125,38 +123,41 @@ let DomoList = function DomoList(props) {
 // grabs domos from the server and renders DomoList
 // update the screen with changes wihtout switching pages
 var loadDomosFromServer = function loadDomosFromServer() {
-  sendAjax('GET', '/getDomos', null, (data) => {
-      ReactDOM.render(React.createElement(DomoList, { domos: data.domos }), document.querySelector('#domos'));
+    sendAjax('GET', '/getDomos', null, function (data) {
+        ReactDOM.render(React.createElement(DomoList, { domos: data.domos }), document.querySelector("#domos"));
     });
 };
 
 // takes CSRF token
 // renders out to DOmoForm to the page and renders default DOmoList
-let setup = function setup(csrf) {
-  ReactDOM.render(React.createElement(DomoForm, { csrf }), document.querySelector('#makeDomo'));
+var setup = function setup(csrf) {
+    ReactDOM.render(React.createElement(DomoForm, { csrf: csrf }), document.querySelector("#makeDomo"));
 
-  ReactDOM.render(React.createElement(DomoList, { domos: [] }), document.querySelector('#domos'));
+    ReactDOM.render(React.createElement(DomoList, { domos: [] }), document.querySelector("#domos"));
 
-  loadDomosFromServer();
+    loadDomosFromServer();
 };
 
-// gets CSRF token and loads the react components
-let getToken = function getToken() {
-  sendAjax('GET', '/getToken', null, (result) => {
-      setup(result.csrfToken);
+//gets CSRF token and loads the react components
+var getToken = function getToken() {
+    sendAjax('GET', '/getToken', null, function (result) {
+        setup(result.csrfToken);
     });
 };
 
-$(document).ready(() => {
-  getToken();
+$(document).ready(function () {
+    getToken();
 });
+'use strict';
 
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 var handleError = function handleError(message) {
   $('#errorMessage').text(message);
   $('#domoMessage').animate({ width: 'toggle' }, 350);
 };
 
-let redirect = function redirect(response) {
+var redirect = function redirect(response) {
   $('#domoMessage').animate({ width: 'hide' }, 350);
   window.location = response.redirect;
 };
@@ -164,14 +165,14 @@ let redirect = function redirect(response) {
 var sendAjax = function sendAjax(type, action, data, success) {
   $.ajax({
     cache: false,
-    type,
+    type: type,
     url: action,
-    data,
+    data: data,
     dataType: 'json',
-    success,
+    success: success,
     error: function error(xhr, status, _error) {
-      let messageObj = JSON.parse(xhr.responseText);
+      var messageObj = JSON.parse(xhr.responseText);
       handleError(messageObj.error);
-    },
+    }
   });
 };

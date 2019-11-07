@@ -27,7 +27,7 @@ const DomoSchema = new mongoose.Schema({
 
   alignment: {
     type: String,
-    required: true,
+    trim: true,
   },
 
   owner: {
