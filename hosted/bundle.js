@@ -39,30 +39,7 @@ var DomoForm = function DomoForm(props) {
             { htmlFor: 'alignment' },
             'Alignment: '
         ),
-        React.createElement(
-            'select',
-            { id: 'domoAlignment' },
-            React.createElement(
-                'option',
-                { value: 'Chaotic' },
-                'Chaotic'
-            ),
-            React.createElement(
-                'option',
-                { value: 'Lawful' },
-                'Lawful'
-            ),
-            React.createElement(
-                'option',
-                { value: 'Evil' },
-                'Evil'
-            ),
-            React.createElement(
-                'option',
-                { value: 'Good' },
-                'Good'
-            )
-        ),
+        React.createElement('input', { id: 'domoAlignment', type: 'text', name: 'alignment', placeholder: 'Domo Alignment' }),
         React.createElement('input', { type: 'hidden', name: '_csrf', value: props.csrf }),
         React.createElement('input', { className: 'makeDomoSubmit', type: 'submit', value: 'Make Domo' })
     );
@@ -73,8 +50,8 @@ var DomoForm = function DomoForm(props) {
 // update state of this component via ajax
 // every time the state updates, page immediately creates UI and shows updates
 var DomoList = function DomoList(props) {
-    var e = document.getElementById("domoAlignment");
-    var selectedAlignment = e.options[e.selectedIndex].value;
+    // var e = document.getElementById("domoAlignment");
+    // var selectedAlignment = e.options[e.selectedIndex].value;
     if (props.domos.length === 0) {
         return React.createElement(
             'div',

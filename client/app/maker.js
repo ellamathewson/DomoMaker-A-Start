@@ -24,12 +24,13 @@ const handleDomo = (e) => {
               <label htmlFor="age">Age: </label>
               <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
               <label htmlFor="alignment">Alignment: </label>
-              <select id="domoAlignment">
+              {/* <select id="domoAlignment">
                   <option value="Chaotic">Chaotic</option>
                   <option value="Lawful">Lawful</option>
                   <option value="Evil">Evil</option>
                   <option value="Good">Good</option>
-              </select>
+              </select> */}
+              <input id="domoAlignment" type="text" name="alignment" placeholder="Domo Alignment" />
               <input type="hidden" name="_csrf" value={props.csrf} />
               <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
           </form>
@@ -43,8 +44,8 @@ const handleDomo = (e) => {
   // update state of this component via ajax
   // every time the state updates, page immediately creates UI and shows updates
   const DomoList = function(props) {
-    var e = document.getElementById("domoAlignment");
-    var selectedAlignment = e.options[e.selectedIndex].value;
+    // var e = document.getElementById("domoAlignment");
+    // var selectedAlignment = e.options[e.selectedIndex].value;
       if(props.domos.length === 0) {
           return (
               <div className="domoList">
