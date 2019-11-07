@@ -199,6 +199,8 @@ nav:nth-child(1) {
 }
 
 .domo {
+    display: flex;
+    flex-direction: column;
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
@@ -237,16 +239,12 @@ h3.emptyDomo {
 }
 
 h3.domoName {
-    float:left;
     width: 200px;
     font-weight: bold;
-    padding-left: 65px;
     font-size: 1.5em;
 }
 
 h3.domoAge {
-    float:right;
-    text-align: left;
     width: 100px;
     font-weight: bold;
     padding-right: 40px;
