@@ -1,4 +1,4 @@
-// /* eslint-disable no-console */
+/* eslint-disable no-console */
 const models = require('../models');
 const Domo = models.Domo;
 

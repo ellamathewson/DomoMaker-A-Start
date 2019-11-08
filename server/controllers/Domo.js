@@ -58,14 +58,7 @@ const getDomos = (request, response) => {
   });
 };
 
-const aboutDomo = (request, response) => {
-  // const req = request;
-  // const res = response;
-  console.log('ghruoa');
-};
-
 module.exports.makerPage = makerPage;
 module.exports.getDomos = getDomos;
 module.exports.make = makeDomo;
 module.exports.aboutPage = aboutPage;
-module.exports.aboutDomo = aboutDomo;
